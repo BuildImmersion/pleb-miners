@@ -102,7 +102,8 @@ You should at least activate the temp sensor alarm, and if you have a protection
 * Colr: OFF
 
 Module 5 - Control Parameters (5-CP):
-For advanced users. You can tune the PID controller here, or just do it from the parameter menu ("Parameter Loop") by pressing the P button when you are at the main menu ("Display Loop"). Good luck tuning! It works okey out of the box, so don' stress the tuning part. Do it when all is up and running and you have the time. At the time of writing this, no changes have been made with these settings.
+
+For advanced users. You can tune the PID controller here, or just do it from the parameter menu ("Parameter Loop") by pressing the P button when you are at the main menu ("Display Loop"). Good luck tuning! It works okey out of the box (overshoots a bit, but stabilizes well enough if there aren't any big, sudden temperature changes), so don' stress the tuning part. Do it when all is up and running and you have the time. At the time of writing this, I have not yet tuned the controller. Tried autotuning twice, but that function does not work well!
 
 Module 6: no changes made
 
