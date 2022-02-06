@@ -21,7 +21,7 @@ Power consumption (estimated): 150W
 # Single Asic Immersion System Example Build With Parts List
 
 ### PID Regulator (Automatic Fan Speed Controller)
-Keep the [manual](https://www.redlion.net/sites/default/files/213/6305/PXU%20Manual_0.pdf) at hand when setting up this not-intuitive PID controller. I spent a few hours familiarizing myself with it, hopefully this will help you save some time:
+Keep the [manual](https://www.redlion.net/sites/default/files/213/6305/PXU%20Manual_0.pdf) at hand when setting up this PID controller. The menu is not very intuitive! I spent a few hours figuring things out, hopefully this will help you save some time:
 * Enter the "Hidden Loop" by holding the P button for 3 seconds
 * Continue pressing the P button until it says "CNFP", press the up arrow
 * Welcome to the settings, sorted in groups (or "modules") from 1 to 9. Browse the groups with the up and down arrows. Exit to the main menu (the "Display Loop") at any time by pressing the D button.
@@ -31,7 +31,7 @@ Here are my settings (browse each module setting with the up and down arrow, ent
 
 Module 1 - Input Parameters (1-IN):
 * tYPE: r385      Standard PT100 temperature element
-* SCAL: Celsius   
+* SCAL: °C   
 * dCPt: 0.0       Kept at default
 * FLtr: 8         Kept at default
 * bANd: 1.0       Kept at default
@@ -85,4 +85,27 @@ Module 3 - Lockout Parameters (3-LC), or which parameters to see on your display
 
 Module 4 - Alarm Parameters (4-AL):
 
-You should at least
+You should at least activate the temp sensor alarm, and if you have a protection circuit like me activate the alarm 2 (normally closed) output relay too:
+* ACt1: NONE      N/A (kept at default)
+* Lit1: nor       N/A
+* rSt1: Auto      N/A
+* Stb1: NO        N/A
+* AL-1: 100.0     N/A
+* IFA1: OFF       N/A
+* ACt2: AuHI      The same temp probe that is used as input for the PID fan speed control, will trip the contactors (the miner) when an alarm temperature set point is reached
+* Lit2: nor       
+* rSt2: LAtc      I want to troubleshoot and rectify any faults (e.g. fan failure) before being able to reset the alarm(s). Else the system will repeatedly hit the overtemp set point, which can't be healthy for the miner or overall system.
+* Stb2: NO        
+* AL-2: 60.0      Alarm overtemp trip arbitrarily set to 60°C, which is 6.4°C above above PID temp set point (53.6°C - keeps outlet chips at 70°C). This will trip the system when there is an actual fault (no nuisance faults), and is still well within what the miner can take (I guess).
+* IFA2: ON        What a function! If the PT100 sensor either breaks or shorts, the controller detects it and trigger the alarm output. Pro tip: if no down time is of higher priority than the potential consequences of running with a faulty temp sensor, consider setting this to OFF and change parameter "IFO1" in "module" (group) 2 to something higher than 0.0.
+* AHYS: 1.0       Kept at default
+* Colr: OFF
+
+Module 5 - Control Parameters (5-CP):
+For advanced users. You can tune the PID controller here, or just do it from the parameter menu ("Parameter Loop") by pressing the P button when you are at the main menu ("Display Loop"). Good luck tuning! It works okey out of the box, so don' stress the tuning part. Do it when all is up and running and you have the time. At the time of writing this, no changes have been made with these settings.
+
+Module 6: no changes made
+
+Module 7: no changes made
+
+Module 9: here you can factory reset the controller by entering code 66. Don't worry, you won't execute [Order 66](https://starwars.fandom.com/wiki/Order_66) and kill the Jedi's.
