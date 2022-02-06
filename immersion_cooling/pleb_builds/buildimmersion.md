@@ -21,7 +21,7 @@ Power consumption (estimated): 150W
 # Single Asic Immersion System Example Build With Parts List
 
 ### PID Regulator (Automatic Fan Speed Controller)
-Keep the [manual](https://www.redlion.net/sites/default/files/213/6305/PXU%20Manual_0.pdf) at hand when setting up this not-intuitive PID controller. I spent a few hours figuring it out, hopefully this will help you save some time:
+Keep the [manual](https://www.redlion.net/sites/default/files/213/6305/PXU%20Manual_0.pdf) at hand when setting up this not-intuitive PID controller. I spent a few hours familiarizing myself with it, hopefully this will help you save some time:
 * Enter the "Hidden Loop" by holding the P button for 3 seconds
 * Continue pressing the P button until it says "CNFP", press the up arrow
 * Welcome to the settings, sorted in groups (or "modules") from 1 to 9. Browse the groups with the up and down arrows. Exit to the main menu (the "Display Loop") at any time by pressing the D button.
@@ -41,7 +41,7 @@ Module 1 - Input Parameters (1-IN):
 * F1In: r-S       Here you can set what you want the F1 button on the controller to do. I figured it would be useful to have it as a start/stop button.
 * F2In: trnF      As above, but for the F2 button. I chose to have it toggle between auto (PID regulation) and manual so I can play around and force the fan speed when I want to.
 
-Module 2 - Output Parameters (2-OP)
+Module 2 - Output Parameters (2-OP):
 * OPAC: d1        
 * CtRL: PId       
 * StPt: SP        
@@ -53,7 +53,7 @@ Module 2 - Output Parameters (2-OP)
 * An1H: 100.0     
 * CHYS: 2.0       Kept at default
 
-Module 3 - Lockout Parameters (3-LC), or which parameters to see on your display and where
+Module 3 - Lockout Parameters (3-LC), or which parameters to see on your display and where:
 * SP: dISP        Set Point changeable from the main menu ("Display Loop"). Consider moving this or hiding it if you don't want others to change it easily
 * OP1: dISP       I moed this up to the main menu ("Display Loop") so I can easily see the output level (fan speed in %)
 * OP2: PArA       N/A (kept as default)
@@ -81,4 +81,8 @@ Module 3 - Lockout Parameters (3-LC), or which parameters to see on your display
 * dEV: LOC        Locked it, as I won't use it
 * SP1: dISP       
 * SP2: LOC        Kept as default
-* CodE: 0
+* CodE: 0         
+
+Module 4 - Alarm Parameters (4-AL):
+
+You should at least
