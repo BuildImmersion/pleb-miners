@@ -31,4 +31,6 @@ When you're done making changes, click the "Source Control" icon, review your ch
 
 <img src="img/github_commit.png">
 
+<img src="img/github_commit.png">
+
 Your changes will be created as a "pull request" which the maintainers will review. If everything looks good, your PR will be merged into the main repo. And once it's merged, your github user will be automatically listed as a contributor!
